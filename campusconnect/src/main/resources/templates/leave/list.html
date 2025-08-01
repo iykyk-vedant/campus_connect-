@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leave Applications</title>
+</head>
+<body>
+<h2>Leave Applications</h2>
+<a href="/leaves/add">Apply for Leave</a>
+<table border="1">
+    <tr>
+        <th>ID</th><th>Name</th><th>Role</th><th>From</th><th>To</th><th>Reason</th><th>Status</th><th>Actions</th>
+    </tr>
+    <tr th:each="leave : ${leaves}">
+        <td th:text="${leave.id}"></td>
+        <td th:text="${leave.applicantName}"></td>
+        <td th:text="${leave.role}"></td>
+        <td th:text="${leave.fromDate}"></td>
+        <td th:text="${leave.toDate}"></td>
+        <td th:text="${leave.reason}"></td>
+        <td th:text="${leave.status}"></td>
+        <td>
+            <a th:href="@{'/leaves/approve/' + ${leave.id}}">Approve</a>
+            <a th:href="@{'/leaves/reject/' + ${leave.id}}">Reject</a>
+            <a th:href="@{'/leaves/delete/' + ${leave.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

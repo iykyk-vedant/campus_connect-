@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${mode == 'edit'} ? 'Edit Schedule' : 'Add Schedule'">Schedule Form</title>
+</head>
+<body>
+<h2 th:text="${mode == 'edit'} ? 'Edit Schedule' : 'Add Schedule'">Schedule Form</h2>
+
+<form th:action="@{${mode == 'edit'} ? '/schedule/edit/' + ${schedule.id} : '/schedule/add'}"
+      th:object="${schedule}"
+      method="post">
+
+  <!-- Hidden ID for Edit -->
+  <input type="hidden" th:if="${mode == 'edit'}" th:field="*{id}" />
+
+  <label>Day:</label>
+  <input type="text" th:field="*{day}" placeholder="e.g. Monday"/><br/><br/>
+
+  <label>Subject:</label>
+  <input type="text" th:field="*{subject}" placeholder="e.g. DBMS"/><br/><br/>
+
+  <label>Room:</label>
+  <input type="text" th:field="*{room}" placeholder="e.g. A-201"/><br/><br/>
+
+  <label>Start Time:</label>
+  <input type="time" th:field="*{startTime}" /><br/><br/>
+
+  <label>End Time:</label>
+  <input type="time" th:field="*{endTime}" /><br/><br/>
+
+  <label>Faculty:</label>
+  <select th:field="*{faculty.id}">
+    <option value="" disabled selected>-- Select Faculty --</option>
+    <option th:each="f : ${faculties}"
+            th:value="${f.id}"
+            th:text="${f.name}"></option>
+  </select><br/><br/>
+
+  <button type="submit"
+          th:text="${mode == 'edit'} ? 'Update' : 'Save'">Save</button>
+</form>
+
+<br/>
+<a th:href="@{/schedule}">← Back to Schedule List</a>
+</body>
+</html>

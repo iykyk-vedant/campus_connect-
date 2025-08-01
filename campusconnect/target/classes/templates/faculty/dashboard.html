@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faculty Dashboard</title>
+</head>
+<body>
+<h2>Welcome to Faculty Dashboard</h2>
+<p>Hello, <span th:text="${#authentication.name}"></span>!</p>
+
+<ul>
+    <li><a href="/schedule">View Schedule</a></li>
+    <li><a href="/attendance">Mark Attendance</a></li>
+    <li><a href="/logout">Logout</a></li>
+</ul>
+</body>
+</html>

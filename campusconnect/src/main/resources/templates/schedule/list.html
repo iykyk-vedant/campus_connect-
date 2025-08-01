@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Schedule List</title></head>
+<body>
+<h1>Class Timetable</h1>
+<a th:href="@{/schedule/add}">Add Schedule</a>
+<table border="1">
+  <tr>
+    <th>Day</th><th>Start</th><th>End</th><th>Subject</th><th>Room</th><th>Faculty</th><th>Actions</th>
+  </tr>
+  <tr th:each="s : ${schedules}">
+    <td th:text="${s.day}"></td>
+    <td th:text="${s.startTime}"></td>
+    <td th:text="${s.endTime}"></td>
+    <td th:text="${s.subject}"></td>
+    <td th:text="${s.room}"></td>
+    <td th:text="${s.faculty.name}">-</td>
+    <td>
+      <a th:href="@{'/schedule/edit/' + ${s.id}}">Edit</a>
+      <a th:href="@{'/schedule/delete/' + ${s.id}}"
+         onclick="return confirm('Are you sure?')">Delete</a>
+    </td>
+  </tr>
+</table>
+<a th:href="@{/}">← Home</a>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!-- src/main/resources/templates/student/edit.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+<h1>Edit Student</h1>
+<form th:action="@{'/students/edit/' + ${student.id}}" th:object="${student}" method="post">
+    Name:       <input type="text"  th:field="*{name}" /><br/>
+    Email:      <input type="email" th:field="*{email}" /><br/>
+    Department: <input type="text"  th:field="*{department}" /><br/>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>

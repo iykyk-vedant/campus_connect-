@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+<h2>Welcome to Admin Dashboard</h2>
+<p>Hello, <span th:text="${#authentication.name}"></span>!</p>
+
+<ul>
+    <li><a href="/students">Manage Students</a></li>
+    <li><a href="/faculty">Manage Faculty</a></li>
+    <li><a href="/courses">Manage Courses</a></li>
+    <li><a href="/schedule">Timetable</a></li>
+    <li><a href="/logout">Logout</a></li>
+</ul>
+</body>
+</html>
